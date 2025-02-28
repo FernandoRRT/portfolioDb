@@ -15,12 +15,17 @@ RUN apt-get update && apt-get install -y \
 
 # Instala o Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Define o diretório de trabalho
 WORKDIR /var/www/html
 
 # Se preferir copiar os arquivos para a imagem durante o build, descomente a linha abaixo:
-# COPY ../ /var/www/html
+# Copia os arquivos do projeto
+COPY . .
+
+# Instala as dependências do Composer
+RUN composer install
 
 # Ajusta as permissões da pasta (caso necessário)
 RUN chown -R www-data:www-data /var/www/html
@@ -29,7 +34,7 @@ RUN chown -R www-data:www-data /var/www/html
 RUN a2enmod rewrite
 
 # Expõe a porta 80
-EXPOSE 80
+EXPOSE 8000
 
 # Comando padrão para iniciar o Apache
 CMD ["apache2-foreground"]
