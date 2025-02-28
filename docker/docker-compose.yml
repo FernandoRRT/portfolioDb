@@ -1,0 +1,14 @@
+# version: '3.8'
+
+services:
+  php-server: # Nome do serviço
+    container_name: laravel_php # Nome do container
+    build:
+      # Para que o contexto inclua também a instalação do Laravel (que está na pasta mãe)
+      context: ../
+      # Como o Dockerfile está dentro da pasta docker:
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"  # Expondo a porta 8000 (ajuste conforme necessário)
+    # Evita que o container seja reiniciado automaticamente
+    restart: "no"
