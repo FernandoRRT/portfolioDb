@@ -43,3 +43,17 @@ docker-compose up -d
 2. Certifique-se que o container está rodando e conecte-se nele pela extensão.
 
 3. Conecte-se ao servidor remoto do git através do ambiente de desenvolvimento do container.
+
+### 3. Execute o Laravel dentro do container
+
+1. Instale o composer (se é que ele não instalou automaticamente)
+
+```bash
+composer install
+```
+
+2. Rode o laravel apontando para fora do container
+
+```bash
+php artisan serve --host=0.0.0.0 --port=8000
+```

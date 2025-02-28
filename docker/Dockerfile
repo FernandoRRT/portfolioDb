@@ -15,14 +15,12 @@ RUN apt-get update && apt-get install -y \
 
 # Instala o Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Define o diretório de trabalho
 WORKDIR /var/www/html
 
 # Se preferir copiar os arquivos para a imagem durante o build, descomente a linha abaixo:
-# Copia os arquivos do projeto
-COPY . .
+#COPY . .
 
 # Instala as dependências do Composer
 RUN composer install

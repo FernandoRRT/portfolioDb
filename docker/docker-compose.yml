@@ -12,7 +12,3 @@ services:
       - "8000:8000"  # Expondo a porta 8000 (ajuste conforme necessário)
     # Evita que o container seja reiniciado automaticamente
     restart: "no"
-    volumes:
-      - .:/var/www
-    working_dir: /var/www
-    command: php artisan serve --host=0.0.0.0 --port=8000
