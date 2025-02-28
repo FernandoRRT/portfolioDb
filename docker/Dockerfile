@@ -22,9 +22,6 @@ WORKDIR /var/www/html
 # Se preferir copiar os arquivos para a imagem durante o build, descomente a linha abaixo:
 #COPY . .
 
-# Instala as dependências do Composer
-RUN composer install
-
 # Ajusta as permissões da pasta (caso necessário)
 RUN chown -R www-data:www-data /var/www/html
 
