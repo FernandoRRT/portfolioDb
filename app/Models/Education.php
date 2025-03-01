@@ -15,6 +15,8 @@ class Education extends Model
         'finished',
         'course_pt',
         'course_en',
+        'degree_en',
+        'degree_pt',
         'abbreviation',
         'institution',
         'created',
